@@ -4,6 +4,10 @@
   <img src="public/Pomodoris.png" />
 </p>
 
+<p align="center">
+  <img src="public/screenshot-0.png" width="600" />
+</p>
+
 *O melhor contador pomodoro que o dinheiro não pode comprar!*
 
 Este é um aplicativo básico que divide o tempo de uma hora em quatro partes com intervalos de cinco minutos, ideal para quem precisa de
