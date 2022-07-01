@@ -1,24 +1,26 @@
 <template>
-  <q-page class="flex flex-center full-height relative">
+  <q-page class="flex flex-center index-page full-height relative">
     <div class="inner">
-      <div class="pomodoris">
+      <div v-if="!stand" class="pomodoris">
         <p class="time">
           {{ formatDate(time) }}
         </p>
-        <p v-if="repeats" class="repeats">
-          {{ repeats }} Pomodoris
+        <p v-if="repeats" class="info">
+          <small>
+            {{ repeats }} de 4 Pomodoris
+          </small>
         </p>
       </div>
 
       <div v-if="stand" class="stand-interval">
-        <div>
-          <p class="time">
-            {{ formatDate(stand) }}
-          </p>
-          <p class="info">
-            Intervalo
-          </p>
-        </div>
+        <p class="time">
+          {{ formatDate(stand) }}
+        </p>
+        <p class="info">
+          Em Intervalo...
+          <br>
+          <small v-if="repeats">x{{ repeats }} Pomodoris</small>
+        </p>
       </div>
       <div>
         <q-btn
@@ -27,7 +29,13 @@
           label="Iniciar"
           color="primary"
         />
-        <q-btn v-else label="Parar" @click="stopAll()" />
+        <q-btn
+          v-else
+          label="Parar"
+          @click="stopAll()"
+          color="grey-9"
+          text-color="white"
+        />
       </div>
     </div>
 
@@ -63,6 +71,7 @@ export default defineComponent({
       if (secs === 1500 && this.repeats < 4) {
         this.stop()
         this.repeats++
+        this.playBell()
         this.startStand()
       }
 

@@ -1,13 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-bar class="q-electron-drag">
+    <q-header class="bg-transparent">
+      <q-bar class="q-electron-drag bg-transparent text-primary">
         <div>Pomodoris</div>
 
         <q-space />
 
         <q-btn dense flat icon="minimize" @click="minimize" />
-        <q-btn dense flat icon="crop_square" @click="toggleMaximize" />
         <q-btn dense flat icon="close" @click="closeApp" />
       </q-bar>
     </q-header>
@@ -27,19 +26,19 @@ export default defineComponent({
   methods: {
     minimize () {
       if (process.env.MODE === 'electron') {
-        window.myWindowAPI.minimize()
+        window.application.minimize()
       }
     },
 
     toggleMaximize () {
       if (process.env.MODE === 'electron') {
-        window.myWindowAPI.toggleMaximize()
+        window.application.toggleMaximize()
       }
     },
 
     closeApp () {
       if (process.env.MODE === 'electron') {
-        window.myWindowAPI.close()
+        window.application.close()
       }
     }
   }
